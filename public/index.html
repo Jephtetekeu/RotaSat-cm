@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RotaSat Cameroun</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; }
+    header { padding: .75rem 1rem; background: #1f5f3a; color: #fff; }
+    .bandeau { background: #fff4d6; padding: .5rem 1rem; font-size: .85rem; }
+    #map { height: 60vh; }
+  </style>
+</head>
+<body>
+  <header><strong>RotaSat Cameroun</strong> — rotations de cultures guidées par les données NASA</header>
+  <div class="bandeau">Outil d'aide à la décision — à valider avec un technicien agricole (MINADER/IRAD).</div>
+  <div id="map"></div>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([7.4, 12.4], 6);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
+    fetch('/api/zones').then(r => r.json()).then(({ zones }) => {
+      zones.forEach(z => L.marker([z.lat, z.lon]).addTo(map).bindPopup(`<b>${z.nom}</b><br>${z.contexte}`));
+    });
+    // TODO (P0) : clic carte → /api/field, formulaire sol + priorités → /api/recommend
+  </script>
+</body>
+</html>

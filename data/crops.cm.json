@@ -1,0 +1,79 @@
+{
+  "_note": "Catalogue indicatif. Les valeurs qualitatives (besoin_eau, tolerance_chaleur, etc.) et les durées de cycle sont des ordres de grandeur à valider avec IRAD/MINADER ou la littérature FAO. Ne pas présenter comme des données mesurées.",
+  "echelle": "1 = faible, 2 = moyen, 3 = élevé",
+  "cultures": [
+    {
+      "id": "mais", "nom": "Maïs", "famille": "poacees",
+      "legumineuse": false, "cycle_jours": [90, 130],
+      "besoin_eau": 3, "tolerance_secheresse": 1, "tolerance_chaleur": 2,
+      "effet_sol": -1, "couverture_erosion": 1, "valeur_marche": 3, "fourrage": 2,
+      "a_valider": true
+    },
+    {
+      "id": "sorgho", "nom": "Sorgho", "famille": "poacees",
+      "legumineuse": false, "cycle_jours": [90, 140],
+      "besoin_eau": 2, "tolerance_secheresse": 3, "tolerance_chaleur": 3,
+      "effet_sol": -1, "couverture_erosion": 2, "valeur_marche": 2, "fourrage": 3,
+      "a_valider": true
+    },
+    {
+      "id": "mil", "nom": "Mil", "famille": "poacees",
+      "legumineuse": false, "cycle_jours": [70, 110],
+      "besoin_eau": 1, "tolerance_secheresse": 3, "tolerance_chaleur": 3,
+      "effet_sol": -1, "couverture_erosion": 2, "valeur_marche": 2, "fourrage": 2,
+      "a_valider": true
+    },
+    {
+      "id": "haricot", "nom": "Haricot", "famille": "fabacees",
+      "legumineuse": true, "cycle_jours": [70, 100],
+      "besoin_eau": 2, "tolerance_secheresse": 1, "tolerance_chaleur": 1,
+      "effet_sol": 2, "couverture_erosion": 1, "valeur_marche": 3, "fourrage": 1,
+      "a_valider": true
+    },
+    {
+      "id": "arachide", "nom": "Arachide", "famille": "fabacees",
+      "legumineuse": true, "cycle_jours": [90, 130],
+      "besoin_eau": 2, "tolerance_secheresse": 2, "tolerance_chaleur": 3,
+      "effet_sol": 2, "couverture_erosion": 2, "valeur_marche": 3, "fourrage": 2,
+      "a_valider": true
+    },
+    {
+      "id": "niebe", "nom": "Niébé", "famille": "fabacees",
+      "legumineuse": true, "cycle_jours": [60, 90],
+      "besoin_eau": 1, "tolerance_secheresse": 3, "tolerance_chaleur": 3,
+      "effet_sol": 2, "couverture_erosion": 3, "valeur_marche": 2, "fourrage": 3,
+      "a_valider": true
+    },
+    {
+      "id": "soja", "nom": "Soja", "famille": "fabacees",
+      "legumineuse": true, "cycle_jours": [90, 120],
+      "besoin_eau": 2, "tolerance_secheresse": 2, "tolerance_chaleur": 2,
+      "effet_sol": 2, "couverture_erosion": 2, "valeur_marche": 2, "fourrage": 2,
+      "a_valider": true
+    },
+    {
+      "id": "pomme_de_terre", "nom": "Pomme de terre", "famille": "solanacees",
+      "legumineuse": false, "cycle_jours": [90, 120],
+      "besoin_eau": 3, "tolerance_secheresse": 1, "tolerance_chaleur": 1,
+      "effet_sol": -1, "couverture_erosion": 1, "valeur_marche": 3, "fourrage": 1,
+      "zones_preferees": ["ouest-dschang"],
+      "a_valider": true
+    },
+    {
+      "id": "manioc", "nom": "Manioc", "famille": "euphorbiacees",
+      "legumineuse": false, "cycle_jours": [240, 540],
+      "besoin_eau": 2, "tolerance_secheresse": 3, "tolerance_chaleur": 3,
+      "effet_sol": -1, "couverture_erosion": 2, "valeur_marche": 3, "fourrage": 1,
+      "remarque": "Cycle long : occupe plusieurs saisons, à traiter comme culture pluri-saison.",
+      "a_valider": true
+    },
+    {
+      "id": "mucuna", "nom": "Mucuna (engrais vert)", "famille": "fabacees",
+      "legumineuse": true, "cycle_jours": [100, 150],
+      "besoin_eau": 2, "tolerance_secheresse": 2, "tolerance_chaleur": 3,
+      "effet_sol": 3, "couverture_erosion": 3, "valeur_marche": 1, "fourrage": 2,
+      "remarque": "Plante de couverture / jachère améliorée.",
+      "a_valider": true
+    }
+  ]
+}

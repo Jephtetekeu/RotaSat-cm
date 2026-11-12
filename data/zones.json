@@ -1,0 +1,32 @@
+{
+  "_note": "Coordonnées approximatives des centres-villes, utilisées comme points de démo. Remplaçables par un clic sur la carte.",
+  "zones": [
+    {
+      "id": "ouest-dschang",
+      "nom": "Hauts-Plateaux de l'Ouest (Dschang)",
+      "region": "Ouest",
+      "lat": 5.45,
+      "lon": 10.06,
+      "contexte": "Zone d'altitude, deux saisons de pluies, cultures vivrières et maraîchères (maïs, haricot, pomme de terre).",
+      "cultures_courantes": ["mais", "haricot", "pomme_de_terre", "soja", "arachide"]
+    },
+    {
+      "id": "nord-garoua",
+      "nom": "Nord (Garoua)",
+      "region": "Nord",
+      "lat": 9.30,
+      "lon": 13.40,
+      "contexte": "Zone soudanienne, une saison des pluies, coton, céréales et légumineuses.",
+      "cultures_courantes": ["mais", "sorgho", "arachide", "niebe", "soja"]
+    },
+    {
+      "id": "extreme-nord-maroua",
+      "nom": "Extrême-Nord (Maroua)",
+      "region": "Extrême-Nord",
+      "lat": 10.59,
+      "lon": 14.32,
+      "contexte": "Zone sahélo-soudanienne, saison des pluies courte, risque de sécheresse et de forte chaleur.",
+      "cultures_courantes": ["sorgho", "mil", "niebe", "arachide"]
+    }
+  ]
+}

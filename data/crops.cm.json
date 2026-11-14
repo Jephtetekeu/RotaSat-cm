@@ -1,6 +1,12 @@
 {
   "_note": "Catalogue indicatif. Les valeurs qualitatives (besoin_eau, tolerance_chaleur, etc.) et les durées de cycle sont des ordres de grandeur à valider avec IRAD/MINADER ou la littérature FAO. Ne pas présenter comme des données mesurées.",
   "echelle": "1 = faible, 2 = moyen, 3 = élevé",
+  "seuils_eau_saison_mm": {
+    "1": 350, "2": 450, "3": 500,
+    "_explication": "Pluie de saison en dessous de laquelle la culture risque de manquer d'eau, par classe de besoin_eau. Ordres de grandeur bas des besoins en eau saisonniers donnés par la FAO (maïs 500–800 mm, sorgho et mil 450–650 mm, haricot 300–500 mm, arachide 500–700 mm, soja 450–700 mm).",
+    "_source": "FAO, Irrigation Water Management, Training Manual n°3 (Brouwer & Heibloem, 1986), chap. 3",
+    "a_valider": true
+  },
   "cultures": [
     {
       "id": "mais", "nom": "Maïs", "famille": "poacees",

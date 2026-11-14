@@ -4,12 +4,12 @@
 - [x] Kit de démarrage (structure, client NASA POWER, zones, catalogue cultures)
 - [ ] Inscription Space Apps + choix de l'événement local + équipe déclarée
 - [ ] Compte Earthdata Login créé (gratuit) — optionnel
-- [ ] `npm install` + `npm run check` OK sur le PC
-- [ ] Dépôt GitHub créé (vide ou avec ce kit)
+- [x] `npm install` + `npm run check` OK sur le PC
+- [x] Dépôt GitHub créé (vide ou avec ce kit)
 - [ ] Lire l'énoncé officiel et corriger `docs/challenge.md` si besoin
 
 ## Samedi 14
-- [ ] P0.1 `GET /api/field` — résumé climatique 10 ans + cache
+- [x] P0.1 `GET /api/field` — résumé climatique 10 ans + cache
 - [ ] P0.2 `src/scenarios.js` — années normale / sèche / chaude
 - [ ] P0.3 `src/rotation.js` — génération + scores + raisons
 - [ ] P0.4 `POST /api/recommend`

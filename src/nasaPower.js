@@ -17,7 +17,7 @@ export const DEFAULT_PARAMS = [
   'RH2M',             // humidité relative (%)
   'GWETTOP',          // humidité du sol en surface (0–1)
   'GWETROOT',         // humidité de la zone racinaire (0–1)
-  'ALLSKY_SFC_SW_DWN' // rayonnement solaire (kWh/m²/jour)
+  'ALLSKY_SFC_SW_DWN' // rayonnement solaire (MJ/m²/jour)
 ];
 
 function cacheKey(url) {

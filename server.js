@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import { readFile } from 'node:fs/promises';
+import { getField, lireCoordonnees } from './src/field.js';
 
 const app = express();
 app.use(express.json());
@@ -18,7 +19,13 @@ app.get('/api/crops', async (_req, res, next) => {
   try { res.json(await loadJson('data/crops.cm.json')); } catch (e) { next(e); }
 });
 
-// TODO (P0) : /api/field, /api/recommend — voir CLAUDE.md §6
+app.get('/api/field', async (req, res, next) => {
+  const c = lireCoordonnees(req.query.lat, req.query.lon);
+  if (!c) return res.status(400).json({ erreur: 'Paramètres lat et lon invalides.' });
+  try { res.json(await getField(c.lat, c.lon)); } catch (e) { next(e); }
+});
+
+// TODO (P0) : /api/recommend — voir CLAUDE.md §6
 // TODO (P1) : /api/sms
 
 app.use((err, _req, res, _next) => {

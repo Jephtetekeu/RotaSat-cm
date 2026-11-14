@@ -18,7 +18,7 @@
 ## Dimanche 15
 - [x] P1.6 Couche GIBS NDVI
 - [ ] P1.7 PWA hors ligne (3 zones en cache)
-- [ ] P1.8 `POST /api/sms` (≤ 160 caractères)
+- [x] P1.8 `POST /api/sms` (≤ 160 caractères)
 - [ ] Déploiement Render + lien de démo
 - [ ] README final (problème, solution, données, limites)
 - [ ] `docs/pitch.md` + vidéo 30 s

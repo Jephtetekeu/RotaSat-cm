@@ -4,6 +4,7 @@ import { readFile } from 'node:fs/promises';
 import { getField, lireCoordonnees } from './src/field.js';
 import { construireScenarios } from './src/scenarios.js';
 import { recommander } from './src/rotation.js';
+import { repondreSms, LONGUEUR_MAX } from './src/sms.js';
 
 const app = express();
 const PROD = process.env.NODE_ENV === 'production';
@@ -116,7 +117,24 @@ app.post('/api/recommend', async (req, res, next) => {
     });
   } catch (e) { next(e); }
 });
-// TODO (P1) : /api/sms
+
+// Canal texte : {texte:"MAIS DSCHANG"} → réponse ≤ 160 caractères. Priorités par défaut (toutes à 3).
+app.post('/api/sms', async (req, res, next) => {
+  const texte = req.body?.texte;
+  if (typeof texte !== 'string' || !texte.trim() || texte.length > LONGUEUR_MAX) {
+    return res.status(400).json({ erreur: `Champ texte requis (1 à ${LONGUEUR_MAX} caractères).` });
+  }
+  try {
+    const [catalogue, { zones }] = await Promise.all([loadJson('data/crops.cm.json'), loadJson('data/zones.json')]);
+    res.json(await repondreSms(texte, {
+      zones, catalogue,
+      recommander: async zone => {
+        const field = await getField(zone.lat, zone.lon);
+        return recommander({ field, scenarios: construireScenarios(field), catalogue, zone, top: 60 });
+      }
+    }));
+  } catch (e) { next(e); }
+});
 
 app.use((err, _req, res, _next) => {
   console.error(err);

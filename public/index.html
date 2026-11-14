@@ -3,27 +3,120 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>RotaSat Cameroun</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <style>
-    body { margin: 0; font-family: system-ui, sans-serif; }
-    header { padding: .75rem 1rem; background: #1f5f3a; color: #fff; }
-    .bandeau { background: #fff4d6; padding: .5rem 1rem; font-size: .85rem; }
-    #map { height: 60vh; }
-  </style>
+  <title>RotaSat Cameroun — rotations de cultures guidées par les données NASA</title>
+  <meta name="description" content="Outil d'aide à la décision : explorer des rotations de cultures adaptées au climat, à partir des données NASA POWER.">
+  <meta name="theme-color" content="#1f5f3a">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header><strong>RotaSat Cameroun</strong> — rotations de cultures guidées par les données NASA</header>
-  <div class="bandeau">Outil d'aide à la décision — à valider avec un technicien agricole (MINADER/IRAD).</div>
-  <div id="map"></div>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  <script>
-    const map = L.map('map').setView([7.4, 12.4], 6);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap' }).addTo(map);
-    fetch('/api/zones').then(r => r.json()).then(({ zones }) => {
-      zones.forEach(z => L.marker([z.lat, z.lon]).addTo(map).bindPopup(`<b>${z.nom}</b><br>${z.contexte}`));
-    });
-    // TODO (P0) : clic carte → /api/field, formulaire sol + priorités → /api/recommend
-  </script>
+  <!-- Sprite d'icônes SVG (trait, currentColor) -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-logo" viewBox="0 0 24 24"><path d="M12 21c0-5 0-9 6-12-1 6-3 9-6 12z"/><path d="M12 21c0-4-1-7-6-9 1 5 3 7 6 9z"/><circle cx="6" cy="5" r="1.6"/><path d="M3.5 7.5l5-5M8.5 7.5l-5-5"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+    <symbol id="i-sol" viewBox="0 0 24 24"><path d="M3 15h18M3 19h18"/><path d="M8 15c0-3 1.5-5 4-6M12 9c2.5 1 4 3 4 6"/><path d="M12 9V4"/></symbol>
+    <symbol id="i-curseurs" viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></symbol>
+    <symbol id="i-pluie" viewBox="0 0 24 24"><path d="M7 15a4 4 0 0 1-.5-8 5.5 5.5 0 0 1 10.6 1.5A3.5 3.5 0 0 1 17 15H7z"/><path d="M9 18l-1 3M13 18l-1 3M17 18l-1 3"/></symbol>
+    <symbol id="i-soleil" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-goutte" viewBox="0 0 24 24"><path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11z"/></symbol>
+    <symbol id="i-rotation" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 1-14.3 4.9M4 12A8 8 0 0 1 18.3 7.1"/><path d="M18.5 3v4.3h-4.3M5.5 21v-4.3h4.3"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8v.01"/></symbol>
+    <symbol id="i-alerte" viewBox="0 0 24 24"><path d="M12 3l9.5 17h-19L12 3z"/><path d="M12 10v4M12 17v.01"/></symbol>
+    <symbol id="i-satellite" viewBox="0 0 24 24"><path d="M13 7l4 4-6 6-4-4 6-6z"/><path d="M15 5l2-2 4 4-2 2M5 15l-2 2 4 4 2-2"/><path d="M15 15a3 3 0 0 0 3 3M15 19a7 7 0 0 0 4-4"/></symbol>
+  </svg>
+
+  <header class="entete">
+    <div class="marque">
+      <svg class="ico ico-lg"><use href="#i-logo"/></svg>
+      <div>
+        <strong>RotaSat Cameroun</strong>
+        <span>Rotations de cultures guidées par les données NASA</span>
+      </div>
+    </div>
+  </header>
+  <div class="bandeau" role="note">
+    <svg class="ico"><use href="#i-info"/></svg>
+    Outil d'aide à la décision — à valider avec un technicien agricole (MINADER/IRAD).
+  </div>
+
+  <main class="grille">
+    <section class="panneau" aria-labelledby="t-champ">
+      <h2 id="t-champ"><span class="etape">1</span><svg class="ico"><use href="#i-pin"/></svg> Votre champ</h2>
+      <p class="aide">Choisissez une zone de démonstration ou cliquez sur la carte.</p>
+      <div id="zones" class="zones"></div>
+      <div id="map" class="carte" role="application" aria-label="Carte du Cameroun"></div>
+      <p id="position" class="position">Aucun point choisi.</p>
+
+      <form id="form" novalidate>
+        <h2><span class="etape">2</span><svg class="ico"><use href="#i-sol"/></svg> Votre sol</h2>
+        <div class="champs">
+          <label>Texture
+            <select name="texture">
+              <option value="">Je ne sais pas</option>
+              <option value="sableux">Sableux (léger)</option>
+              <option value="limoneux">Limoneux</option>
+              <option value="argileux">Argileux (lourd)</option>
+            </select>
+          </label>
+          <label>pH <small>(optionnel)</small>
+            <input name="ph" type="number" min="3" max="10" step="0.1" inputmode="decimal" placeholder="ex. 5,8">
+          </label>
+          <label>Matière organique
+            <select name="matiere_organique">
+              <option value="">Je ne sais pas</option>
+              <option value="faible">Faible</option>
+              <option value="moyenne">Moyenne</option>
+              <option value="elevee">Élevée</option>
+            </select>
+          </label>
+        </div>
+
+        <h2><span class="etape">3</span><svg class="ico"><use href="#i-curseurs"/></svg> Vos priorités</h2>
+        <p class="aide">0 = sans importance, 5 = très important.</p>
+        <div id="priorites" class="priorites"></div>
+
+        <button id="go" type="submit" class="bouton" disabled>
+          <svg class="ico"><use href="#i-rotation"/></svg> Proposer des rotations
+        </button>
+      </form>
+    </section>
+
+    <section class="resultats" aria-live="polite">
+      <div id="etat" class="etat">
+        <svg class="ico ico-xl"><use href="#i-satellite"/></svg>
+        <p>Choisissez un champ pour voir 10 ans de climat mesuré par la NASA.</p>
+      </div>
+
+      <div id="climat" class="carte-blanche" hidden>
+        <h2><svg class="ico"><use href="#i-pluie"/></svg> Climat du champ, 2015–2024</h2>
+        <div id="resume" class="resume"></div>
+        <div class="graphe"><canvas id="g-pluie" aria-label="Pluie mensuelle et température maximale"></canvas></div>
+        <div class="graphe petit"><canvas id="g-sol" aria-label="Humidité de la zone racinaire"></canvas></div>
+        <p class="source" id="source-climat"></p>
+      </div>
+
+      <div id="reco" hidden>
+        <div class="carte-blanche">
+          <h2><svg class="ico"><use href="#i-soleil"/></svg> Stress test : 3 années réelles</h2>
+          <p class="aide" id="decoupage"></p>
+          <div id="scenarios" class="scenarios"></div>
+        </div>
+        <h2 class="titre-section"><svg class="ico"><use href="#i-rotation"/></svg> Rotations proposées</h2>
+        <div id="rotations" class="rotations"></div>
+        <div id="exclusions" class="note"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied">
+    Données : <a href="https://power.larc.nasa.gov" rel="noopener" target="_blank">NASA POWER</a> (LaRC, communauté AG).
+    Caractéristiques des cultures indicatives, à valider. Projet NASA Space Apps 2026 — challenge « Field Shift ».
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js" crossorigin=""></script>
+  <script src="app.js" type="module"></script>
 </body>
 </html>

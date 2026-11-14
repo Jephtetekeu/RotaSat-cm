@@ -13,7 +13,7 @@
 - [x] P0.2 `src/scenarios.js` — années normale / sèche / chaude
 - [x] P0.3 `src/rotation.js` — génération + scores + raisons
 - [x] P0.4 `POST /api/recommend`
-- [ ] P0.5 UI : carte → formulaire → graphes → 3 cartes de rotation
+- [x] P0.5 UI : carte → formulaire → graphes → 3 cartes de rotation
 
 ## Dimanche 15
 - [ ] P1.6 Couche GIBS NDVI

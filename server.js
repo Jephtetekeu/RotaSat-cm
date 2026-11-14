@@ -6,8 +6,54 @@ import { construireScenarios } from './src/scenarios.js';
 import { recommander } from './src/rotation.js';
 
 const app = express();
+const PROD = process.env.NODE_ENV === 'production';
+app.disable('x-powered-by');
+app.set('trust proxy', 1); // derrière le proxy de l'hébergeur (Render) pour lire la vraie IP
+
+// En-têtes de sécurité (OWASP A05). Les scripts inline sont interdits ; 'unsafe-inline' n'est
+// autorisé que pour les styles, car Leaflet positionne la carte avec des attributs style.
+app.use((_req, res, next) => {
+  res.set({
+    'Content-Security-Policy': [
+      "default-src 'self'",
+      "script-src 'self' https://unpkg.com https://cdn.jsdelivr.net",
+      "style-src 'self' 'unsafe-inline' https://unpkg.com",
+      "img-src 'self' data: https://*.tile.openstreetmap.org https://unpkg.com https://gibs.earthdata.nasa.gov",
+      "connect-src 'self'",
+      "font-src 'self'",
+      "object-src 'none'",
+      "base-uri 'self'",
+      "form-action 'self'",
+      "frame-ancestors 'none'"
+    ].join('; '),
+    'X-Content-Type-Options': 'nosniff',
+    'Referrer-Policy': 'strict-origin-when-cross-origin',
+    'X-Frame-Options': 'DENY',
+    'Permissions-Policy': 'geolocation=(self), camera=(), microphone=()',
+    'Cross-Origin-Opener-Policy': 'same-origin'
+  });
+  if (PROD) res.set('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
+  next();
+});
+
+// Limitation simple par IP (OWASP A04) : protège NASA POWER et le serveur des abus.
+function limiter({ fenetreMs, max }) {
+  const compteurs = new Map();
+  setInterval(() => compteurs.clear(), fenetreMs).unref();
+  return (req, res, next) => {
+    const n = (compteurs.get(req.ip) ?? 0) + 1;
+    compteurs.set(req.ip, n);
+    if (n > max) {
+      console.warn(`[limite] ${req.ip} ${req.method} ${req.path}`);
+      return res.status(429).json({ erreur: 'Trop de requêtes, réessayez dans une minute.' });
+    }
+    next();
+  };
+}
+app.use('/api/', limiter({ fenetreMs: 60_000, max: 30 }));
+
 app.use(express.json({ limit: '10kb' }));
-app.use(express.static('public'));
+app.use(express.static('public', { maxAge: PROD ? '1h' : 0 }));
 
 const loadJson = async p => JSON.parse(await readFile(p, 'utf8'));
 
@@ -77,7 +123,7 @@ app.use((err, _req, res, _next) => {
   if (err.type === 'entity.parse.failed') return res.status(400).json({ erreur: 'Corps JSON invalide.' });
   if (err.type === 'entity.too.large') return res.status(413).json({ erreur: 'Requête trop volumineuse.' });
   // Pas de détail interne en production
-  res.status(500).json({ erreur: process.env.NODE_ENV === 'production' ? 'Erreur interne.' : err.message });
+  res.status(500).json({ erreur: PROD ? 'Erreur interne.' : err.message });
 });
 
 const port = process.env.PORT || 3000;

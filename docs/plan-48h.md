@@ -12,7 +12,7 @@
 - [x] P0.1 `GET /api/field` — résumé climatique 10 ans + cache
 - [x] P0.2 `src/scenarios.js` — années normale / sèche / chaude
 - [x] P0.3 `src/rotation.js` — génération + scores + raisons
-- [ ] P0.4 `POST /api/recommend`
+- [x] P0.4 `POST /api/recommend`
 - [ ] P0.5 UI : carte → formulaire → graphes → 3 cartes de rotation
 
 ## Dimanche 15

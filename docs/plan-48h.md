@@ -16,7 +16,7 @@
 - [x] P0.5 UI : carte → formulaire → graphes → 3 cartes de rotation
 
 ## Dimanche 15
-- [ ] P1.6 Couche GIBS NDVI
+- [x] P1.6 Couche GIBS NDVI
 - [ ] P1.7 PWA hors ligne (3 zones en cache)
 - [ ] P1.8 `POST /api/sms` (≤ 160 caractères)
 - [ ] Déploiement Render + lien de démo

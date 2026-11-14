@@ -245,3 +245,31 @@ function preuve(d) {
   }
   return el('span', { class: 'preuve indicatif' }, d.a_valider ? `${d.source} · à valider` : d.source);
 }
+
+// ---------- Couche satellite NASA GIBS (NDVI MODIS Terra, composite 8 jours) ----------
+const GIBS = 'https://gibs.earthdata.nasa.gov/wmts/epsg3857/best/MODIS_Terra_NDVI_8Day/default/{time}/GoogleMapsCompatible_Level9/{z}/{y}/{x}.png';
+let coucheNdvi = null;
+const iso = d => d.toISOString().slice(0, 10);
+{
+  const champDate = $('#ndvi-date');
+  const aujourdhui = new Date();
+  // Par défaut : il y a 3 semaines, le temps que le composite 8 jours soit publié.
+  champDate.max = iso(aujourdhui);
+  champDate.value = iso(new Date(aujourdhui.getTime() - 21 * 864e5));
+
+  const majCouche = () => {
+    if (coucheNdvi) { map.removeLayer(coucheNdvi); coucheNdvi = null; }
+    const actif = $('#ndvi-actif').checked;
+    $('#ndvi-options').hidden = !actif;
+    // La date vient d'un champ <input type="date"> : on vérifie quand même le format avant de l'injecter dans l'URL.
+    if (!actif || !/^\d{4}-\d{2}-\d{2}$/.test(champDate.value)) return;
+    coucheNdvi = L.tileLayer(GIBS, {
+      time: champDate.value, maxNativeZoom: 9, maxZoom: 18, opacity: .75,
+      attribution: 'NDVI : NASA GIBS / MODIS Terra'
+    }).addTo(map);
+  };
+  $('#ndvi-actif').addEventListener('change', majCouche);
+  champDate.addEventListener('change', majCouche);
+  // Lien de démo : ?ndvi=1 active la couche à l'ouverture
+  if (new URLSearchParams(location.search).has('ndvi')) { $('#ndvi-actif').checked = true; majCouche(); }
+}

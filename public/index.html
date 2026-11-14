@@ -46,6 +46,19 @@
       <p class="aide">Choisissez une zone de démonstration ou cliquez sur la carte.</p>
       <div id="zones" class="zones"></div>
       <div id="map" class="carte" role="application" aria-label="Carte du Cameroun"></div>
+      <div class="satellite">
+        <label class="coche">
+          <input type="checkbox" id="ndvi-actif">
+          <svg class="ico"><use href="#i-satellite"/></svg> Végétation vue du satellite (NDVI)
+        </label>
+        <div id="ndvi-options" hidden>
+          <label>Date de l'image
+            <input type="date" id="ndvi-date" min="2015-01-01">
+          </label>
+          <div class="legende" aria-hidden="true"><span>sol nu</span><i></i><span>végétation dense</span></div>
+          <p class="source">NASA GIBS — MODIS Terra, NDVI composite 8 jours (couleurs de la légende approximatives). Les zones blanches sont des nuages ou des données absentes.</p>
+        </div>
+      </div>
       <p id="position" class="position">Aucun point choisi.</p>
 
       <form id="form" novalidate>

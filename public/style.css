@@ -140,3 +140,13 @@ summary { cursor: pointer; font-weight: 700; color: var(--vert); font-size: .9re
   .culture { flex: none; }
   .barre { grid-template-columns: 6rem minmax(0, 1fr) 2rem; }
 }
+
+/* Couche satellite NASA GIBS */
+.satellite { margin-top: .6rem; padding: .55rem .65rem; background: var(--fond); border-radius: 10px; }
+.coche { flex-direction: row; align-items: center; gap: .45rem; cursor: pointer; }
+.coche input { width: 1.1rem; height: 1.1rem; accent-color: var(--vert); flex: none; }
+#ndvi-options { margin-top: .55rem; display: grid; gap: .45rem; }
+input[type=date] { width: 100%; min-width: 0; font: inherit; font-weight: 400; padding: .4rem .55rem; border: 1px solid var(--ligne); border-radius: 8px; background: #fff; min-height: 2.4rem; }
+.legende { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .45rem; font-size: .74rem; color: var(--gris); }
+.legende i { height: .55rem; border-radius: 999px; background: linear-gradient(90deg, #c9b28a, #e6dc9a, #a9cf6a, #4f9d3a, #145a22); }
+.satellite .source { margin: 0; }

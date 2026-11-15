@@ -7,8 +7,8 @@ RotaSat est un outil d'aide à la décision qui aide les agriculteurs camerounai
 Projet du **NASA Space Apps Challenge 2026**, challenge *Field Shift: Adapting Farms with NASA Data*.
 
 - Code : https://github.com/Jephtetekeu/RotaSat-cm
-- Démo en ligne : lien ajouté après le déploiement
-- Pitch de 30 secondes : [vidéo avec voix off](public/pitch.mp4) (servie à l'adresse `/pitch.mp4` sur la démo) et [déroulé](docs/pitch.md)
+- Démo en ligne : https://rotasat-cm-production.up.railway.app/
+- Pitch de 30 secondes : [vidéo avec voix off](public/pitch.mp4) (en ligne : https://rotasat-cm-production.up.railway.app/pitch.mp4) et [déroulé](docs/pitch.md)
 
 > Outil d'aide à la décision — à valider avec un technicien agricole (MINADER/IRAD). RotaSat appuie le jugement de l'agriculteur, il ne le remplace pas.
 

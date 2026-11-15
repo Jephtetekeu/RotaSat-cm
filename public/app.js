@@ -42,6 +42,7 @@ function afficherEtat(texte, { chargement = false, erreur = false } = {}) {
 
 async function api(url, options) {
   const r = await fetch(url, options);
+  if (r.headers.get('X-RotaSat-Cache')) $('#hors-ligne').hidden = false;
   const j = await r.json().catch(() => ({}));
   if (!r.ok) throw new Error(j.erreur || `Erreur ${r.status}`);
   return j;
@@ -272,4 +273,13 @@ const iso = d => d.toISOString().slice(0, 10);
   champDate.addEventListener('change', majCouche);
   // Lien de démo : ?ndvi=1 active la couche à l'ouverture
   if (new URLSearchParams(location.search).has('ndvi')) { $('#ndvi-actif').checked = true; majCouche(); }
+}
+
+// ---------- Hors ligne (PWA) ----------
+const majReseau = () => { $('#hors-ligne').hidden = navigator.onLine; };
+addEventListener('online', majReseau);
+addEventListener('offline', majReseau);
+majReseau();
+if ('serviceWorker' in navigator) {
+  addEventListener('load', () => navigator.serviceWorker.register('/sw.js').catch(e => console.warn('Service worker non installé :', e)));
 }

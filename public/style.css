@@ -150,3 +150,7 @@ input[type=date] { width: 100%; min-width: 0; font: inherit; font-weight: 400; p
 .legende { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .45rem; font-size: .74rem; color: var(--gris); }
 .legende i { height: .55rem; border-radius: 999px; background: linear-gradient(90deg, #c9b28a, #e6dc9a, #a9cf6a, #4f9d3a, #145a22); }
 .satellite .source { margin: 0; }
+
+/* Bandeau hors ligne */
+.hors-ligne { background: #e8f0f8; color: #1d4a78; border-bottom-color: #c5d8ec; }
+.bandeau[hidden] { display: none; }

@@ -20,7 +20,9 @@ app.use((_req, res, next) => {
       "script-src 'self' https://unpkg.com https://cdn.jsdelivr.net",
       "style-src 'self' 'unsafe-inline' https://unpkg.com",
       "img-src 'self' data: https://*.tile.openstreetmap.org https://unpkg.com https://gibs.earthdata.nasa.gov",
-      "connect-src 'self'",
+      "connect-src 'self' https://unpkg.com https://cdn.jsdelivr.net", // le service worker précharge les bibliothèques
+      "worker-src 'self'",
+      "manifest-src 'self'",
       "font-src 'self'",
       "object-src 'none'",
       "base-uri 'self'",
@@ -54,6 +56,8 @@ function limiter({ fenetreMs, max }) {
 app.use('/api/', limiter({ fenetreMs: 60_000, max: 30 }));
 
 app.use(express.json({ limit: '10kb' }));
+// Le service worker ne doit jamais venir d'un cache HTTP, sinon ses mises à jour n'arrivent pas.
+app.get('/sw.js', (_req, res, next) => { res.set('Cache-Control', 'no-cache'); next(); });
 app.use(express.static('public', { maxAge: PROD ? '1h' : 0 }));
 
 const loadJson = async p => JSON.parse(await readFile(p, 'utf8'));

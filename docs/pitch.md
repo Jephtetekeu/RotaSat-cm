@@ -1,6 +1,6 @@
 # Pitch RotaSat Cameroun — 30 secondes
 
-- **Vidéo** : [pitch.mp4](pitch.mp4) — 29,4 s, 1280 × 720, MP4 (H.264 + AAC), avec voix off et sous-titres.
+- **Vidéo** : [pitch.mp4](pitch.mp4) — 29,1 s, 1280 × 720, MP4 (H.264 + AAC), avec voix off et sous-titres.
 - **Version animée dans le navigateur** : `/pitch.html` sur la démo (boutons « Lire avec la voix » et « Rejouer sans le son »).
 - **Challenge** : NASA Space Apps 2026, *Field Shift: Adapting Farms with NASA Data*.
 
@@ -15,17 +15,17 @@ Chaque plan correspond à une phrase de la voix. Le minutage exact est dans [pub
 | Début | Ce que dit la voix | À l'écran |
 |---|---|---|
 | 0,3 s | « À Maroua, la pluie change d'une année à l'autre. Alors, que semer après le maïs ? » | 856 mm en 2022, 640 mm en 2023, puis la question. |
-| 6,1 s | « RotaSat lit dix ans de données NASA pour votre champ : pluie, chaleur, humidité du sol. » | L'application : carte de Maroua, graphes du climat, et les trois paramètres NASA POWER. |
-| 11,8 s | « Indiquez votre sol et vos priorités. Il propose trois rotations, testées sur une année normale, une sèche, et une chaude. » | Le formulaire, les rotations proposées, puis les trois années réelles du stress test. |
-| 19,8 s | « Chaque score montre la donnée NASA qui l'explique. » | Le détail « Pourquoi ? » et une preuve : `NASA POWER · PRECTOTCORR · 2023 jun–sep · 510 mm`. |
-| 22,7 s | « Il fonctionne hors ligne, et répond par SMS. » | Mode hors ligne et échange SMS « NIEBE MAROUA ». |
-| 25,7 s | « RotaSat appuie l'agriculteur, sans le remplacer. » | Logo et signature. |
+| 5,8 s | « RotaSat lit dix ans de données NASA pour votre champ : pluie, chaleur, humidité du sol. » | L'application : carte de Maroua, graphes du climat, et les trois paramètres NASA POWER. |
+| 11,6 s | « Indiquez votre sol et vos priorités. Il propose trois rotations, testées sur une année normale, une sèche, et une chaude. » | Le formulaire, les rotations proposées, puis les trois années réelles du stress test. |
+| 19,3 s | « Chaque score montre la donnée NASA qui l'explique. » | Le détail « Pourquoi ? » et une preuve : `NASA POWER · PRECTOTCORR · 2023 jun–sep · 510 mm`. |
+| 22,3 s | « Il fonctionne hors ligne, et répond par SMS. » | Mode hors ligne et échange SMS « NIEBE MAROUA ». |
+| 25,5 s | « RotaSat appuie l'agriculteur, sans le remplacer. » | Logo et signature. |
 
 Tous les chiffres et toutes les captures viennent de l'application en fonctionnement, sur la zone de Maroua (10,59° N, 14,32° E).
 
 ## Voix
 
-La voix est une **voix de synthèse** : Microsoft Julie, la voix française installée avec Windows. Les six phrases sont dans `public/pitch/voix/`, un fichier par phrase. Pour changer de voix, il suffit de remplacer ces six fichiers et de régénérer le minutage : le montage suit la durée des phrases.
+La voix est une **voix de synthèse** : Microsoft Vivienne, une voix neuronale française, générée en ligne avec la bibliothèque `edge-tts`. Les six phrases sont dans `public/pitch/voix/`, un fichier par phrase. Pour changer de voix, il suffit de remplacer ces six fichiers et de régénérer le minutage : le montage suit la durée des phrases.
 
 À déclarer dans la soumission, avec les autres usages d'outils d'IA du projet.
 

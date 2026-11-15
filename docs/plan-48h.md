@@ -20,7 +20,7 @@
 - [x] P1.7 PWA hors ligne (3 zones en cache)
 - [x] P1.8 `POST /api/sms` (≤ 160 caractères)
 - [ ] Déploiement Render + lien de démo
-- [ ] README final (problème, solution, données, limites)
-- [ ] `docs/pitch.md` + vidéo 30 s
+- [x] README final (problème, solution, données, limites)
+- [x] `docs/pitch.md` + vidéo 30 s
 - [ ] **Soumission sur le site Space Apps avant la clôture**
 - [ ] P2 (bonus) WhatsApp / export PDF

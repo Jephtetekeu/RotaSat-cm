@@ -8,7 +8,7 @@ Projet du **NASA Space Apps Challenge 2026**, challenge *Field Shift: Adapting F
 
 - Code : https://github.com/Jephtetekeu/RotaSat-cm
 - Démo en ligne : lien ajouté après le déploiement
-- Pitch de 30 secondes : [vidéo avec voix off](docs/pitch.mp4) et [déroulé](docs/pitch.md)
+- Pitch de 30 secondes : [vidéo avec voix off](public/pitch.mp4) (servie à l'adresse `/pitch.mp4` sur la démo) et [déroulé](docs/pitch.md)
 
 > Outil d'aide à la décision — à valider avec un technicien agricole (MINADER/IRAD). RotaSat appuie le jugement de l'agriculteur, il ne le remplace pas.
 
@@ -101,6 +101,14 @@ Node.js et Express côté serveur, HTML, CSS et JavaScript sans framework côté
 - En-têtes de sécurité : Content-Security-Policy sans script inline, `nosniff`, interdiction d'encadrer le site, HSTS en production.
 - 30 requêtes par minute et par adresse IP sur l'API.
 - Les erreurs internes sont masquées en production. Aucun secret dans le dépôt.
+
+## Usage de l'IA
+
+Conformément au règlement du NASA Space Apps Challenge :
+
+- **Code et documentation** : écrits avec l'aide d'un assistant de programmation IA, puis testés par l'équipe.
+- **Voix de la vidéo** : générée par IA (voix de synthèse neuronale Microsoft Vivienne, via la bibliothèque `edge-tts`). La vidéo affiche la mention « AI-generated voice · video built with AI assistance » et la porte dans ses métadonnées.
+- **Données** : aucune valeur n'est générée ni modifiée par IA. Les données climatiques viennent directement de l'API NASA POWER, et les captures de la vidéo viennent de l'application en fonctionnement.
 
 ## Limites
 

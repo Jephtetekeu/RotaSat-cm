@@ -7,42 +7,49 @@
       "texte": "À Maroua, la pluie change d'une année à l'autre. Alors, que semer après le maïs ?",
       "debut": 0.3,
       "duree": 5.095,
-      "fichier": "pitch/voix/1-probleme.wav"
+      "fichier": "pitch/voix/1-probleme.wav",
+      "en": "In Maroua, rainfall changes from one year to the next. So, what should you sow after maize?"
     },
     {
       "id": "2-climat",
       "texte": "RotaSat lit dix ans de données NASA pour votre champ : pluie, chaleur, humidité du sol.",
       "debut": 5.815,
       "duree": 5.375,
-      "fichier": "pitch/voix/2-climat.wav"
+      "fichier": "pitch/voix/2-climat.wav",
+      "en": "RotaSat reads ten years of NASA data for your field: rainfall, heat, soil moisture."
     },
     {
       "id": "3-rotations",
       "texte": "Indiquez votre sol et vos priorités. Il propose trois rotations, testées sur une année normale, une sèche, et une chaude.",
       "debut": 11.61,
       "duree": 7.303,
-      "fichier": "pitch/voix/3-rotations.wav"
+      "fichier": "pitch/voix/3-rotations.wav",
+      "en": "Enter your soil and your priorities. It suggests three rotations, tested on a normal year, a dry year and a hot year."
     },
     {
       "id": "4-pourquoi",
       "texte": "Chaque score montre la donnée NASA qui l'explique.",
       "debut": 19.333,
       "duree": 2.536,
-      "fichier": "pitch/voix/4-pourquoi.wav"
+      "fichier": "pitch/voix/4-pourquoi.wav",
+      "en": "Every score shows the NASA data behind it."
     },
     {
       "id": "5-terrain",
       "texte": "Il fonctionne hors ligne, et répond par SMS.",
       "debut": 22.289,
       "duree": 2.829,
-      "fichier": "pitch/voix/5-terrain.wav"
+      "fichier": "pitch/voix/5-terrain.wav",
+      "en": "It works offline and answers by text message."
     },
     {
       "id": "6-fin",
       "texte": "RotaSat appuie l'agriculteur, sans le remplacer.",
       "debut": 25.538,
       "duree": 2.962,
-      "fichier": "pitch/voix/6-fin.wav"
+      "fichier": "pitch/voix/6-fin.wav",
+      "en": "RotaSat supports the farmer, without replacing them."
     }
-  ]
+  ],
+  "mention_ia": "Voix off générée par IA (voix de synthèse). Vidéo assemblée par du code écrit avec une assistance IA."
 }

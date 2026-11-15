@@ -14,5 +14,6 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.0"
   },
+  "aiDisclosure": "Code et documentation écrits avec l'aide d'un assistant de programmation IA. Voir la section « Usage de l'IA » du README.",
   "license": "MIT"
 }

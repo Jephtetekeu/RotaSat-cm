@@ -1,6 +1,6 @@
 # Pitch RotaSat Cameroun — 30 secondes
 
-- **Vidéo** : [pitch.mp4](pitch.mp4) — 29,1 s, 1280 × 720, MP4 (H.264 + AAC), avec voix off et sous-titres.
+- **Vidéo** : [pitch.mp4](../public/pitch.mp4) — 29,1 s, 1280 × 720, MP4 (H.264 + AAC), voix off en français, sous-titres en anglais. Servie à l'adresse `/pitch.mp4` sur la démo.
 - **Version animée dans le navigateur** : `/pitch.html` sur la démo (boutons « Lire avec la voix » et « Rejouer sans le son »).
 - **Challenge** : NASA Space Apps 2026, *Field Shift: Adapting Farms with NASA Data*.
 
@@ -27,7 +27,7 @@ Tous les chiffres et toutes les captures viennent de l'application en fonctionne
 
 La voix est une **voix de synthèse** : Microsoft Vivienne, une voix neuronale française, générée en ligne avec la bibliothèque `edge-tts`. Les six phrases sont dans `public/pitch/voix/`, un fichier par phrase. Pour changer de voix, il suffit de remplacer ces six fichiers et de régénérer le minutage : le montage suit la durée des phrases.
 
-À déclarer dans la soumission, avec les autres usages d'outils d'IA du projet.
+La vidéo affiche en permanence la mention « AI-generated voice · video built with AI assistance », et la même déclaration figure dans ses métadonnées (XMP). À déclarer aussi dans le formulaire de soumission, avec les autres usages d'outils d'IA du projet.
 
 ## Réponses courtes aux questions probables du jury
 

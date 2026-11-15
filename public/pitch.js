@@ -54,7 +54,9 @@ function rendu(t) {
     }
   });
   const dit = segments.find(s => t >= s.debut - 0.05 && t <= s.debut + s.duree + 0.15);
-  if (dit && sousTitre.textContent !== dit.texte) sousTitre.textContent = dit.texte;
+  // Sous-titres en anglais (champ « en ») pour le jury international ; la voix reste en français.
+  const ligne = dit ? dit.en ?? dit.texte : '';
+  if (dit && sousTitre.textContent !== ligne) sousTitre.textContent = ligne;
   sousTitre.style.opacity = dit ? 1 : 0;
   sousTitre.style.zIndex = 20;
   barre.style.width = `${(t / DUREE) * 100}%`;

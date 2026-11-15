@@ -8,7 +8,7 @@ Projet du **NASA Space Apps Challenge 2026**, challenge *Field Shift: Adapting F
 
 - Code : https://github.com/Jephtetekeu/RotaSat-cm
 - Démo en ligne : lien ajouté après le déploiement
-- Pitch de 30 secondes : [docs/pitch.md](docs/pitch.md)
+- Pitch de 30 secondes : [vidéo avec voix off](docs/pitch.mp4) et [déroulé](docs/pitch.md)
 
 > Outil d'aide à la décision — à valider avec un technicien agricole (MINADER/IRAD). RotaSat appuie le jugement de l'agriculteur, il ne le remplace pas.
 

@@ -1,7 +1,7 @@
 # Pitch RotaSat Cameroun — 30 secondes
 
-- **Vidéo** : [pitch.mp4](pitch.mp4) — 29,5 s, 1280 × 720, MP4 (H.264), sans son.
-- **Version animée dans le navigateur** : `/pitch.html` sur la démo (bouton « Rejouer »).
+- **Vidéo** : [pitch.mp4](pitch.mp4) — 29,4 s, 1280 × 720, MP4 (H.264 + AAC), avec voix off et sous-titres.
+- **Version animée dans le navigateur** : `/pitch.html` sur la démo (boutons « Lire avec la voix » et « Rejouer sans le son »).
 - **Challenge** : NASA Space Apps 2026, *Field Shift: Adapting Farms with NASA Data*.
 
 ## Le pitch en une phrase
@@ -10,27 +10,24 @@ RotaSat aide un agriculteur camerounais à choisir sa rotation de cultures en la
 
 ## Déroulé de la vidéo
 
-| Temps | À l'écran | Message |
+Chaque plan correspond à une phrase de la voix. Le minutage exact est dans [public/pitch/chrono.json](../public/pitch/chrono.json).
+
+| Début | Ce que dit la voix | À l'écran |
 |---|---|---|
-| 0 – 4,6 s | « 856 mm en 2022 · 640 mm en 2023 » puis « Quelle culture semer après le maïs ? » | Le problème : à Maroua, la pluie change fortement d'une année à l'autre. |
-| 4,6 – 9,2 s | Trois blocs : données NASA, sol de l'agriculteur, ses priorités | La solution : RotaSat croise ces trois éléments et propose 3 rotations expliquées. |
-| 9,2 – 14,8 s | Graphes de pluie, température et humidité du sol ; carte NDVI | Étape 1 : le climat réel du champ, avec NASA POWER et NASA GIBS (MODIS). |
-| 14,8 – 19,8 s | Les trois années : normale 2022, sèche 2023, chaude 2024 | Étape 2 : un stress test sur des années réelles, jamais inventées. |
-| 19,8 – 25 s | Rotation Haricot → Maïs → Arachide et son détail « Pourquoi ? » | Étape 3 : chaque score cite sa source, son paramètre, sa période et sa valeur. |
-| 25 – 28 s | Hors ligne et échange SMS « NIEBE MAROUA » | L'accès terrain : utilisable sans réseau et par SMS. |
-| 28 – 30 s | Logo et signature | L'outil appuie le jugement de l'agriculteur, il ne le remplace pas. |
+| 0,3 s | « À Maroua, la pluie change d'une année à l'autre. Alors, que semer après le maïs ? » | 856 mm en 2022, 640 mm en 2023, puis la question. |
+| 6,1 s | « RotaSat lit dix ans de données NASA pour votre champ : pluie, chaleur, humidité du sol. » | L'application : carte de Maroua, graphes du climat, et les trois paramètres NASA POWER. |
+| 11,8 s | « Indiquez votre sol et vos priorités. Il propose trois rotations, testées sur une année normale, une sèche, et une chaude. » | Le formulaire, les rotations proposées, puis les trois années réelles du stress test. |
+| 19,8 s | « Chaque score montre la donnée NASA qui l'explique. » | Le détail « Pourquoi ? » et une preuve : `NASA POWER · PRECTOTCORR · 2023 jun–sep · 510 mm`. |
+| 22,7 s | « Il fonctionne hors ligne, et répond par SMS. » | Mode hors ligne et échange SMS « NIEBE MAROUA ». |
+| 25,7 s | « RotaSat appuie l'agriculteur, sans le remplacer. » | Logo et signature. |
 
 Tous les chiffres et toutes les captures viennent de l'application en fonctionnement, sur la zone de Maroua (10,59° N, 14,32° E).
 
-## Texte à dire si le pitch est présenté à l'oral (environ 30 secondes)
+## Voix
 
-> À Maroua, la NASA a mesuré 856 millimètres de pluie en 2022, et 640 en 2023. Alors, quelle culture semer après le maïs ?
->
-> RotaSat croise dix ans de données NASA avec le sol de l'agriculteur et ses priorités. Il propose trois rotations, et teste chacune sur trois années réelles : une normale, une sèche, une chaude.
->
-> Chaque score montre la donnée qui l'explique. L'outil fonctionne hors ligne et répond par SMS.
->
-> RotaSat appuie le jugement de l'agriculteur. Il ne le remplace pas.
+La voix est une **voix de synthèse** : Microsoft Julie, la voix française installée avec Windows. Les six phrases sont dans `public/pitch/voix/`, un fichier par phrase. Pour changer de voix, il suffit de remplacer ces six fichiers et de régénérer le minutage : le montage suit la durée des phrases.
+
+À déclarer dans la soumission, avec les autres usages d'outils d'IA du projet.
 
 ## Réponses courtes aux questions probables du jury
 
@@ -40,6 +37,6 @@ Tous les chiffres et toutes les captures viennent de l'application en fonctionne
 - **Pourquoi le Cameroun ?** Trois zones très contrastées, de 2 700 mm de pluie par an à Dschang à 800 mm à Maroua, et aucun outil équivalent repéré parmi les équipes du challenge.
 - **Et la suite ?** Relier le canal texte à une passerelle SMS ou WhatsApp, valider le catalogue avec l'IRAD, ajouter l'humidité du sol SMAP.
 
-## Refaire la vidéo
+## Comment la vidéo est fabriquée
 
-La page `public/pitch.html` dessine chaque instant à partir du temps (`window.rendu(t)`), ce qui permet de l'exporter image par image. Avec `?capture=1`, la lecture automatique est désactivée. Les captures de l'application sont dans `public/pitch/`.
+La page `public/pitch.html` dessine chaque instant à partir du temps (`window.rendu(t)`). Avec `?capture=1`, la lecture automatique est désactivée, ce qui permet de l'exporter image par image à 25 images par seconde. Les images et la voix sont ensuite encodées en MP4 par l'encodeur du navigateur, sans temps réel, donc la voix et l'image restent calées. Les captures de l'application sont dans `public/pitch/`.

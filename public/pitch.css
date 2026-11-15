@@ -1,64 +1,73 @@
 /* Pitch de 30 secondes : scène fixe de 1280 × 720, mise à l'échelle de la fenêtre par pitch.js. */
-:root { --vert: #1f5f3a; --vert-fonce: #143f27; --or: #f3c25a; --ocre: #b8741a; --encre: #1d2621; --gris: #5d6b63; --fond: #f5f7f4; --bleu: #2c6aa8; }
+:root { --vert: #1f5f3a; --vert-fonce: #143f27; --or: #f3c25a; --ocre: #b8741a; --encre: #1d2621; --gris: #5d6b63; --fond: #f5f7f4; --bleu: #2c6aa8; --ligne: #d9e2dc; }
 * { box-sizing: border-box; }
 html, body { height: 100%; }
 body { margin: 0; background: #0d1a13; font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; color: var(--encre); overflow: hidden; }
 
 .cadre { position: absolute; left: 50%; top: 50%; width: 1280px; height: 720px; transform-origin: center; overflow: hidden; background: var(--fond); }
-.plan { position: absolute; inset: 0; padding: 56px 72px 64px; display: flex; flex-direction: column; justify-content: center; opacity: 0; }
+.plan { position: absolute; inset: 0; padding: 44px 72px 110px; display: flex; flex-direction: column; justify-content: center; opacity: 0; }
 .plan.vert { background: radial-gradient(circle at 80% 15%, #2a7a4c, var(--vert) 45%, var(--vert-fonce)); color: #fff; align-items: center; text-align: center; }
 .plan.clair { background: var(--fond); }
-.plan.deux { flex-direction: row; align-items: center; gap: 48px; }
+.plan.demo { justify-content: flex-start; padding-top: 34px; }
 
 h1 { font-size: 62px; line-height: 1.1; margin: 0; letter-spacing: -.5px; }
-h2 { font-size: 44px; line-height: 1.15; margin: 0 0 18px; letter-spacing: -.3px; }
+h2 { font-size: 38px; line-height: 1.15; margin: 0; letter-spacing: -.3px; color: var(--vert); }
 p { font-size: 25px; line-height: 1.4; margin: 0 0 14px; }
-.sur { font-size: 20px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--ocre); margin-bottom: 14px; }
-.vert .sur { color: var(--or); }
-.centre { text-align: center; max-width: 900px; margin: 26px auto 0; color: var(--gris); }
+.sur { font-size: 20px; text-transform: uppercase; letter-spacing: 2px; font-weight: 700; color: var(--or); margin-bottom: 14px; }
 .ico { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 
-/* Plan 1 */
-.duel { display: flex; gap: 90px; margin: 26px 0 44px; }
+/* Plan 1 : le problème */
+.duel { display: flex; gap: 90px; margin: 22px 0 40px; }
 .duel b { display: block; font-size: 104px; line-height: 1; font-weight: 800; }
 .duel span { font-size: 28px; opacity: .85; }
 .duel .sec b { color: var(--or); }
 
-/* Plan 2 */
-.trio { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; margin: 12px 0 38px; }
-.trio > div { background: #fff; border: 1px solid #d9e2dc; border-radius: 18px; padding: 28px 26px; }
-.trio .ico { width: 58px; height: 58px; color: var(--vert); }
-.trio b { display: block; font-size: 28px; margin: 14px 0 6px; }
-.trio span { font-size: 21px; color: var(--gris); }
-.plan.clair > h2 { color: var(--vert); }
+/* Plans de démonstration */
+.demo header { display: flex; align-items: center; gap: 16px; margin-bottom: 18px; }
+.num { display: grid; place-items: center; width: 50px; height: 50px; border-radius: 50%; background: var(--vert); color: #fff; font-size: 26px; font-weight: 800; flex: none; }
+figure { margin: 0; border-radius: 14px; overflow: hidden; background: #fff; border: 1px solid var(--ligne); box-shadow: 0 16px 44px rgba(20, 63, 39, .18); }
+figure img { display: block; width: 100%; }
+.ecran { width: 1136px; height: 470px; }
+.ecran img { height: 100%; object-fit: cover; object-position: top center; transform-origin: 78% 30%; }
+[data-seg="4-pourquoi"] .ecran img { transform-origin: 55% 12%; }
 
-/* Plans avec capture */
-.texte { flex: 0 0 420px; }
-figure { margin: 0; flex: 1; min-width: 0; height: 560px; border-radius: 16px; overflow: hidden; background: #fff; border: 1px solid #d9e2dc; box-shadow: 0 18px 50px rgba(20, 63, 39, .18); }
-figure img { display: block; width: 100%; height: 100%; object-fit: contain; }
-figure.haut img { height: auto; object-fit: initial; }
-figure.large { flex: none; height: 330px; width: 1136px; }
-.vignette { width: 300px; border-radius: 12px; border: 3px solid #fff; box-shadow: 0 8px 24px rgba(0, 0, 0, .2); margin-top: 6px; }
-.preuve { display: inline-block; font-size: 21px; font-weight: 600; color: var(--bleu); background: #e8f0f8; border-radius: 10px; padding: 8px 14px; }
+.puces { position: absolute; right: 92px; top: 150px; display: grid; gap: 10px; justify-items: end; }
+.puces span { background: var(--vert); color: #fff; border-radius: 999px; padding: 8px 18px; font-size: 20px; box-shadow: 0 6px 18px rgba(0, 0, 0, .25); }
+.puces b { color: var(--or); margin-right: 8px; }
+
+.cote { display: flex; gap: 26px; align-items: flex-start; }
+.formulaire { flex: 0 0 372px; height: 470px; }
+.formulaire img { height: 100%; object-fit: contain; }
+.pile { flex: 1; min-width: 0; display: grid; gap: 14px; }
+.defilant { height: 262px; }
+.stress { height: 194px; }
+.stress img { height: 100%; object-fit: contain; }
+
+.preuve { position: absolute; left: 50%; bottom: 122px; margin: 0 0 0 -330px; width: 660px; text-align: center; font-size: 24px; font-weight: 700; color: #fff; background: var(--bleu); border-radius: 12px; padding: 10px 16px; box-shadow: 0 10px 28px rgba(0, 0, 0, .28); }
 
 /* Plan terrain */
-.terrain { display: grid; grid-template-columns: 1fr 1.25fr; gap: 28px; width: 100%; text-align: left; margin-top: 12px; }
-.terrain > div { background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .25); border-radius: 18px; padding: 24px 26px; }
-.terrain .ico { width: 50px; height: 50px; color: var(--or); }
-.terrain b { display: block; font-size: 30px; margin: 10px 0 6px; }
-.terrain span { font-size: 21px; opacity: .9; }
-.bulle { display: block; background: #fff; color: var(--encre); opacity: 1 !important; border-radius: 14px 14px 14px 4px; padding: 10px 14px; margin-top: 10px; font-size: 18px !important; line-height: 1.35; }
-.bulle.moi { background: var(--or); border-radius: 14px 14px 4px 14px; width: fit-content; margin-left: auto; font-weight: 700; }
+.terrain { display: grid; grid-template-columns: 1fr 1.25fr; gap: 28px; width: 100%; text-align: left; }
+.terrain > div { background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .25); border-radius: 18px; padding: 26px 28px; }
+.terrain .ico { width: 54px; height: 54px; color: var(--or); }
+.terrain b { display: block; font-size: 34px; margin: 10px 0 6px; }
+.terrain span { font-size: 22px; opacity: .9; }
+.terrain .bulle { display: block; background: #fff; color: var(--encre); opacity: 1; border-radius: 14px 14px 14px 4px; padding: 10px 14px; margin-top: 10px; font-size: 19px; line-height: 1.35; }
+.terrain .bulle.moi { background: var(--or); border-radius: 14px 14px 4px 14px; width: fit-content; margin-left: auto; font-weight: 700; }
 
 /* Plan final */
 .fin .logo { width: 150px; height: 150px; fill: none; stroke: #fff; stroke-width: 22; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 8px; }
-.fin .logo .or, .logo .or { stroke: var(--or); }
-.fin p { font-size: 30px; margin-top: 16px; }
-.fin .sur { font-size: 19px; margin-top: 22px; text-transform: none; letter-spacing: .5px; }
+.logo .or { stroke: var(--or); }
+.fin p { font-size: 32px; margin-top: 16px; }
+.fin .sur { font-size: 19px; margin-top: 20px; text-transform: none; letter-spacing: .5px; }
+
+/* Sous-titres : le texte dit par la voix */
+.sous-titre { position: absolute; left: 50%; bottom: 22px; transform: translateX(-50%); width: max-content; max-width: 1100px; margin: 0; padding: 9px 20px; border-radius: 10px; background: rgba(13, 26, 19, .86); color: #fff; font-size: 23px; line-height: 1.3; text-align: center; opacity: 0; }
 
 .progression { position: absolute; left: 0; right: 0; bottom: 0; height: 6px; background: rgba(0, 0, 0, .12); }
 .progression i { display: block; height: 100%; width: 0; background: var(--or); }
 
 .commandes { position: fixed; right: 14px; bottom: 12px; display: flex; gap: 10px; align-items: center; font-size: 13px; z-index: 2; }
-.commandes button, .commandes a { font: inherit; color: #fff; background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .3); border-radius: 999px; padding: 6px 14px; cursor: pointer; text-decoration: none; }
+.commandes button, .commandes a { display: inline-flex; align-items: center; gap: 6px; font: inherit; color: #fff; background: rgba(255, 255, 255, .14); border: 1px solid rgba(255, 255, 255, .3); border-radius: 999px; padding: 6px 14px; cursor: pointer; text-decoration: none; }
+.commandes .ico { width: 16px; height: 16px; }
+#avec-son { background: var(--or); color: var(--encre); border-color: var(--or); font-weight: 700; }
 body.capture .commandes { display: none; }

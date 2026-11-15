@@ -1,0 +1,48 @@
+{
+  "duree": 29.353,
+  "voix": "Microsoft Julie (voix de synthèse Windows, fr-FR)",
+  "segments": [
+    {
+      "id": "1-probleme",
+      "texte": "À Maroua, la pluie change d'une année à l'autre. Alors, que semer après le maïs ?",
+      "debut": 0.3,
+      "duree": 5.511,
+      "fichier": "pitch/voix/1-probleme.wav"
+    },
+    {
+      "id": "2-climat",
+      "texte": "RotaSat lit dix ans de données NASA pour votre champ : pluie, chaleur, humidité du sol.",
+      "debut": 6.071,
+      "duree": 5.421,
+      "fichier": "pitch/voix/2-climat.wav"
+    },
+    {
+      "id": "3-rotations",
+      "texte": "Indiquez votre sol et vos priorités. Il propose trois rotations, testées sur une année normale, une sèche, et une chaude.",
+      "debut": 11.752,
+      "duree": 7.807,
+      "fichier": "pitch/voix/3-rotations.wav"
+    },
+    {
+      "id": "4-pourquoi",
+      "texte": "Chaque score montre la donnée NASA qui l'explique.",
+      "debut": 19.819,
+      "duree": 2.598,
+      "fichier": "pitch/voix/4-pourquoi.wav"
+    },
+    {
+      "id": "5-terrain",
+      "texte": "Il fonctionne hors ligne, et répond par SMS.",
+      "debut": 22.677,
+      "duree": 2.768,
+      "fichier": "pitch/voix/5-terrain.wav"
+    },
+    {
+      "id": "6-fin",
+      "texte": "RotaSat appuie l'agriculteur, sans le remplacer.",
+      "debut": 25.706,
+      "duree": 3.098,
+      "fichier": "pitch/voix/6-fin.wav"
+    }
+  ]
+}

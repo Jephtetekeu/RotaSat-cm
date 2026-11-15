@@ -207,8 +207,7 @@ function carteRotation(rot, i, saisons) {
     seq.append(el('div', { class: 'culture' + (c.legumineuse ? ' legume' : '') },
       el('small', {}, saisons[k]?.libelle ?? `Saison ${k + 1}`),
       el('b', {}, c.nom),
-      c.legumineuse ? el('small', {}, 'légumineuse — fixe l\'azote') : null,
-      c.a_valider ? el('span', { class: 'badge' }, 'caractéristiques indicatives') : null));
+      c.legumineuse ? el('small', {}, 'légumineuse — fixe l\'azote') : null));
   });
 
   const barres = el('div', { class: 'barres' }, rot.scenarios.map(s => el('div', { class: 'barre' },

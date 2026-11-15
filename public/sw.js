@@ -4,7 +4,7 @@
 // - POST /api/recommend : l'API Cache ne stocke pas les POST, on range donc la réponse
 //   sous une clé GET construite à partir du contenu de la demande.
 // - Les fonds de carte (OpenStreetMap, NASA GIBS) ne sont pas mis en cache.
-const VERSION = 'rotasat-v1';
+const VERSION = 'rotasat-v2';
 const APP = ['/', '/style.css', '/app.js', '/manifest.json', '/icons/icon.svg', '/icons/icon-192.png', '/api/zones'];
 const CDN = [
   'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css',
